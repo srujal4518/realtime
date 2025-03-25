@@ -8,7 +8,7 @@
 
     <style>
    /* Modern & Visually Appealing CSS */
-body {
+   body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     background: linear-gradient(to right, #a1c4fd, #c2e9fb);
@@ -17,19 +17,34 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 20px;
     transition: all 0.3s ease-in-out;
 }
 
 h1 {
     font-size: 2.5rem;
-    color: #fff;
+    color: #e108af;
+    text-shadow: 2px 2px 5px #ff416c;
     margin-bottom: 20px;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-select, textarea {
+textarea {
     width: 50%;
+    min-width: 300px;
+    max-width: 600px;
     padding: 12px;
+    resize: vertical;
+    height: 120px;
+}
+
+select {
+    width: 15%;
+    min-width: 120px;
+    padding: 10px;
+}
+
+select, textarea {
     margin: 10px 0;
     border-radius: 10px;
     border: none;
@@ -43,11 +58,6 @@ select, textarea {
 select:hover, textarea:hover {
     transform: scale(1.03);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
-}
-
-textarea {
-    resize: none;
-    height: 120px;
 }
 
 button {
@@ -75,14 +85,16 @@ button:hover {
     border-radius: 12px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    width: 90%;
-    max-width: 600px;
+    width: 80%;
+    max-width: 800px;
     min-height: 60px;
     text-align: center;
     border: 2px solid #ffb703;
     padding-right: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .translated-text {
@@ -90,11 +102,15 @@ button:hover {
     font-weight: bold;
     color: #fff;
     word-wrap: break-word;
+    white-space: normal;
     padding: 12px 18px;
     background: #f4a261;
     border-radius: 6px;
     border: 1px solid #ff6f61;
-    max-width: 80%;
+    max-width: 100%;
+    min-width: 80%;
+    min-height: 30px;
+    text-align: center;
 }
 
 .copy-btn {
@@ -102,7 +118,7 @@ button:hover {
     color: white;
     border: none;
     padding: 8px 12px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
@@ -128,67 +144,78 @@ button:hover {
 .swap-btn:hover {
     transform: rotate(180deg) scale(1.1);
 }
+
+#mood {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
     </style>
 </head>
 <body>
-    <h1>Real-Time Translator</h1>
+    <h1>Welcome to the Real-Time Translator</h1>
 
-    <div>
-        <select id="fromLang">
-            <option value="en">English</option>
-            <option value="hi">Hindi</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-            <option value="zh-cn">Chinese (Simplified)</option>
-            <option value="zh-tw">Chinese (Traditional)</option>
-            <option value="de">German</option>
-            <option value="ja">Japanese</option>
-            <option value="ko">Korean</option>
-            <option value="ru">Russian</option>
-            <option value="it">Italian</option>
-            <option value="pt">Portuguese</option>
-            <option value="ar">Arabic</option>
-            <option value="bn">Bengali</option>
-            <option value="pa">Punjabi</option>
-            <option value="ur">Urdu</option>
-            <option value="ta">Tamil</option>
-            <option value="te">Telugu</option>
-            <option value="gu">Gujarati</option>
-            <option value="mr">Marathi</option>
-        </select>
-        <div>
-        <button class="swap-btn" id="swapLanguages">⇄</button>
-    </div>
-        <select id="toLang">
-            <option value="en">English</option>
-            <option value="hi">Hindi</option>
-            <option value="fr">French</option>
-            <option value="es">Spanish</option>
-            <option value="zh-cn">Chinese (Simplified)</option>
-            <option value="zh-tw">Chinese (Traditional)</option>
-            <option value="de">German</option>
-            <option value="ja">Japanese</option>
-            <option value="ko">Korean</option>
-            <option value="ru">Russian</option>
-            <option value="it">Italian</option>
-            <option value="pt">Portuguese</option>
-            <option value="ar">Arabic</option>
-            <option value="bn">Bengali</option>
-            <option value="pa">Punjabi</option>
-            <option value="ur">Urdu</option>
-            <option value="ta">Tamil</option>
-            <option value="te">Telugu</option>
-            <option value="gu">Gujarati</option>
-            <option value="mr">Marathi</option>
-        </select>
-    </div>
+    <select id="fromLang">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="zh-cn">Chinese (Simplified)</option>
+        <option value="zh-tw">Chinese (Traditional)</option>
+        <option value="de">German</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="ru">Russian</option>
+        <option value="it">Italian</option>
+        <option value="pt">Portuguese</option>
+        <option value="ar">Arabic</option>
+        <option value="bn">Bengali</option>
+        <option value="pa">Punjabi</option>
+        <option value="ur">Urdu</option>
+        <option value="ta">Tamil</option>
+        <option value="te">Telugu</option>
+        <option value="gu">Gujarati</option>
+        <option value="mr">Marathi</option>
+        <option value="tr">Turkish</option>
+    </select>
+    
+    <button class="swap-btn" id="swapLanguages">⇄</button>
+    
+    <select id="toLang">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="zh-cn">Chinese (Simplified)</option>
+        <option value="zh-tw">Chinese (Traditional)</option>
+        <option value="de">German</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="ru">Russian</option>
+        <option value="it">Italian</option>
+        <option value="pt">Portuguese</option>
+        <option value="ar">Arabic</option>
+        <option value="bn">Bengali</option>
+        <option value="pa">Punjabi</option>
+        <option value="ur">Urdu</option>
+        <option value="ta">Tamil</option>
+        <option value="te">Telugu</option>
+        <option value="gu">Gujarati</option>
+        <option value="mr">Marathi</option>
+        <option value="tr">Turkish</option>
+    </select>
+    
 
     <textarea id="inputText" rows="3" cols="50" placeholder="Start typing..."></textarea>
 
+    <p id="mood">Mood predictor: Waiting...</p>
+
     <div id="translated-text-box">
         <p class="translated-text" id="outputText">Waiting...</p>
-        <button id="copyButton" class="copy-btn">📋 Copy</button>
     </div>
+    <button id="copyButton" class="copy-btn">📋 Copy</button>
     
     <script>
         const socket = io("http://127.0.0.1:5000");
@@ -221,6 +248,7 @@ button:hover {
 
         socket.on("translated", (data) => {
             document.getElementById("outputText").innerText = data.translatedText;
+            document.getElementById("mood").innerText = `Mood: ${data.mood}`;
         });
 
         document.getElementById("copyButton").addEventListener("click", () => {
@@ -232,4 +260,3 @@ button:hover {
     </script>
 </body>
 </html>
-

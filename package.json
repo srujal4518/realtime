@@ -18,6 +18,7 @@
     "fs": "^0.0.1-security",
     "google-translate-api-x": "^10.7.2",
     "gtts": "^0.2.1",
+    "sentiment": "^5.0.2",
     "socket.io": "^4.8.1"
   }
 }
